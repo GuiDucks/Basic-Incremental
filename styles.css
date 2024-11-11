@@ -1,0 +1,421 @@
+@font-face {
+    font-family: 'MonospaceTypewriter';
+    src: url('MonospaceTypewriter.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MonospaceTypewriter',monospace;
+    user-select: none;
+}
+
+.upgrade .Cost {
+    font-size: 4;
+    margin-bottom: 0px;
+    color: #fff;
+}
+
+button {
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.3);
+}
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+    margin: 0;
+    transition: background-color 0.3s
+}
+
+nav {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    background-color: #1a1a1a;
+    z-index: 100;
+    overflow-x: auto;
+    white-space: nowrap;
+    transition: background-color 0.3s
+}
+
+.nav-button {
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.nav-button:hover {
+    background-color: #3700b3;
+    transform: scale(1.35);
+}
+
+.page {
+    padding: 20px;
+    margin-top: 60px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 10000px;
+    color: #ffffff;
+}
+.label {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+}
+#PointsLabel,#ChargeLabel,#GalLabel,#ReplicantiLabel {
+    left: 50%;
+    transform: translateX(-50%);
+}
+#PowerLabel {
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#CosmicLabel {
+    top: 215px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#PrestigeLabel {
+    top: 525px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+@media (max-width: 600px) {
+    .nav-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+.upgrade {
+    position: absolute;
+    border: 4px solid #6200ea;
+    margin: 20px;
+}
+#Upg1,#Upg2,#Upg5,#Upg6{
+    background-color: #210050;
+}
+#Upg3,#Upg4,#Upg10 {
+    border-color: aqua;
+    background-color: rgb(20,50,50);
+}
+#Upg7,#Upg8,#Upg9 {
+    border-color: gray;
+    background-color: rgb(20,20,20);
+}
+#Upg11,#Upg12,#Upg13,#Upg14 {
+    border-color: rgb(255, 0, 0);
+    background-color: rgb(50,20,20);
+}
+#Upg15,#Upg16,#Upg17,#Upg18 {
+    border-color: rgb(255, 255, 255);
+    background-color: rgb(80,80,80);
+}
+#Upg19,#Upg20,#Upg21,#Upg22,#Upg23,#Upg24,#Upg25,#Upg26,#Upg27,#Upg29{
+    border-color: #6E22B5;
+    background-color: #2D0E4A;
+}
+#Upg28,#Upg30,#Upg31,#Upg32,#Upg33{
+    border-color: #00ff00;
+    background-color: rgb(0,80,0);
+}
+#Upg34,#Upg36,#Upg38,#Upg41{
+    border-color: rgb(255, 100, 0);
+    background-color: rgb(80, 30, 0);
+}
+#Upg35,#Upg37,#Upg39,#Upg40,#Upg42{
+    border-color: rgb(255, 255, 0);
+    background-color: rgb(80, 80, 0);
+}
+#PrestigeDiv {
+    border: 4px solid aqua;
+    margin: 20px 0;
+    padding: 10px;
+    width: calc(100% - 40px);
+    background-color: rgb(20,50,50);
+}
+#PresBtn {
+    background-color: aqua;
+    color: #000000;
+    font-weight: bolder;
+    :hover{
+        transform: scale(1.3);
+    }
+}
+#ChargeBtn {
+    position: absolute;
+    background-color: rgb(255, 255, 0);
+    color: #000000;
+    font-weight: bolder;
+    top: 370px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#IPBtn,#GalBtn,#SolarBtn {
+    position: absolute;
+    color: #000000;
+    font-weight: bolder;
+    top: 155px;
+    left: 50%;
+    transform: translateX(-50%);
+    transform: translateX(-50%) scale(1.5);
+}
+#IPBtn {
+    background-color: rgb(255, 0, 0);
+}
+#GalBtn {
+    background: rgb(155,0,255)
+}
+#SolarBtn {
+    background: rgb(255,100,0)
+}
+#IPBtn:hover,#GalBtn:hover,#SolarBtn:hover {
+    transform: translateX(-50%) scale(2.2);
+}
+#Upg1{
+    top: 150px;
+    left: 60px;
+}
+#Upg2{
+    top: 150px;
+    left: 920px;
+}
+#PrestigeDiv {
+    border: 4px solid aqua;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 350px;
+    border-color: aqua;
+}
+#ChargeBtn:hover {
+    transform: translateX(-50%) scale(1.3);
+}
+#PresBtn {
+    background-color: aqua;
+    color: #000000;
+    font-weight:bolder;
+}
+#Upg3{
+    top: 580px;
+    left: 60px;
+}
+#Upg4{
+    top: 580px;
+    left: 920px;
+}
+#Upg5{
+    top: 430px; 
+    left: 60px;
+    line-height: 30px;
+}
+#Upg6{
+    top: 430px; 
+    left: 920px;
+    line-height: 30px;
+}
+#Upg7{
+    top: 180px; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+#Upg8{
+    top: 500px; 
+    left: 60px;
+}
+#Upg9{
+    top: 500px; 
+    left: 920px;
+}
+#Upg10{
+    top: 760px; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+#Upg11{
+    top: 160px; 
+    left: 100px;
+    line-height: 30px;
+}
+#Upg12{
+    top: 160px; 
+    left: 880px;
+    line-height: 30px;
+}
+#Upg13{
+    top: 400px; 
+    left: 100px;
+    line-height: 30px;
+}
+#Upg14{
+    top: 400px; 
+    left: 880px;
+    line-height: 30px;
+}
+#Upg15,#Upg28{
+    top: 220px; 
+    left: 100px;
+    line-height: 30px;
+}
+#Upg16,#Upg30{
+    top: 220px; 
+    left: 880px;
+}
+#Upg17,#Upg31{
+    top: 400px; 
+    left: 100px;
+    line-height: 30px;
+}
+#Upg18{
+    top: 400px; 
+    left: 880px;
+}
+#Upg19{
+    top: 500px; 
+    left: 100px;
+}
+#Upg20{
+    top: 500px; 
+    left: 880px;
+}
+#Upg21{
+    top: 680px; 
+    left: 880px;
+}
+#Upg22{
+    top: 700px; 
+    left: 100px;
+}
+#Upg23{
+    top: 950px; 
+    left: 100px;
+}
+#Upg24{
+    top: 850px; 
+    left: 880px;
+}
+#Upg25{
+    top: 1050px; 
+    left: 880px;
+}
+#Upg26{
+    top: 1150px; 
+    left: 100px;
+}
+#Upg27{
+    top: 1240px; 
+    left: 880px;
+}
+#Upg29{
+    top: 1340px; 
+    left: 100px;
+}
+#Upg32{
+    top: 430px; 
+    left: 880px;
+}
+#Upg33{
+    top: 600px; 
+    left: 100px;
+}
+#Upg34{
+    top: 340px; 
+    left: 100px;
+    line-height: 30px;
+}
+#Upg35{
+    top: 340px; 
+    left: 880px;
+    line-height: 30px;
+}
+#Upg36{
+    top: 570px; 
+    left: 100px;
+    line-height: 30px;
+}
+#Upg37{
+    top: 500px; 
+    left: 880px;
+    line-height: 30px;
+}
+#Upg38{
+    top: 730px; 
+    left: 100px;
+    line-height: 30px;
+}
+#Upg39{
+    top: 700px; 
+    left: 880px;
+    line-height: 30px;
+}
+#Upg40{
+    top: 870px; 
+    left: 880px;
+    line-height: 30px;
+}
+#Upg41{
+    top: 900px; 
+    left: 100px;
+    line-height: 30px;
+}
+#Upg42{
+    top: 1030px; 
+    left: 880px;
+    line-height: 30px;
+}
+.upgrade {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px 0;
+    text-align: center;
+    width: 80%;
+    max-width: 460px;
+    box-shadow: 0 8px 20px rgb(0, 0, 0);
+}
+#DarkChargeLabel,#IPLabel,#InfinityBoosts,#TIPLabel,#ExoEnLabel,#SolarLabel {
+    left: 50%;
+    transform: translateX(-50%);
+}
+#InfinityBoosts {
+    top: 240px;
+}
+#DCULabel {
+    top:350px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#StarLabel {
+    top:220px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#StarInfoLabel {
+    top:70px;
+    left: 50%;
+    font-size: 15px;
+    width: 100%;
+    transform: translateX(-50%);
+}

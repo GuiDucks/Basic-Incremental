@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stupid ass game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="body">
+    <nav id="nav">
+        <button class="nav-button" id = "nav1" onclick="showPage('StarterPage',0)">Points</button>
+        <button class="nav-button" id = "nav2" onclick="showPage('ChargePage',2)">1Vt Pts Required</button>
+        <button class="nav-button" id = "nav3" onclick="showPage('DarkChargePage',3)">25 Power Required</button>
+        <button class="nav-button" id = "nav4" onclick="showPage('InfinityPage',4)">179.76UCe Pts required</button>
+        <button class="nav-button" id = "nav5" onclick="showPage('BreakPage',5)">150 TIP required</button>
+        <button class="nav-button" id = "nav6" onclick="showPage('ExoticEnPage',6)">1Qd TIP required</button>
+        <button class="nav-button" id = "nav7" onclick="showPage('GalaxyPage',7)">10 OcVt TIP required</button>
+        <button class="nav-button" id = "nav8" onclick="showPage('ReplicantiPage',8)">100 Oc Galaxies required</button>
+        <button class="nav-button" id = "nav9" onclick="showPage('SolarPage',9)">179.76 UCe Galaxies required</button>
+    </nav>
+    <div class="page" id="StarterPage">
+        <label id="PointsLabel" class="label">Points: <font size = "7" color="#6153CC">0</font></label>
+        <div class="upgrade" id="Upg1">
+            <label class="UpgLvl" id="Upg1Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg1Title"><font size = "6">×1.5 Points</font></label><br>
+            <label class="Cost" id="Upg1Cost">Cost: 100 Pts</label>
+            <button class="Buy" id="Upg1BuyOnce" onclick='Buy("Upg1",false)'>Buy 1</button>
+            <button class="Buy" id="Upg1BuyMax" onclick='Buy("Upg1",true)'>Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg2">
+            <label class="UpgLvl" id="Upg2Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg2Title"><font size = "6">Add 0.05 to Upgrade 1's Base</font></label><br>
+            <label class="Cost" id="Upg2Cost">Cost: 1M Pts</label>
+            <button class="Buy" id="Upg2BuyOnce" onclick='Buy("Upg2",false)' style="background-color: #6200ea">Buy 1</button>
+            <button class="Buy" id="Upg2BuyMax" onclick='Buy("Upg2",true)' style="background-color: #6200ea">Buy Max</button>
+        </div>
+        <div class="upgrade" id="PrestigeDiv">
+            <label class="UpgTitle" id="PresTitle"><font size = "6">Prestige</font></label><br>
+            <label class="Cost" id="PresDesc">Resets points and upgrades 1 and 2<br></label>
+            <button class="resetButton" id="PresBtn" onclick='Prestige()'>250T Pts required</button>
+        </div>
+        <label id="PrestigeLabel" class="label">you have: <font size = "7" color="aqua">0</font> PPts</label>
+        <div class="upgrade" id="Upg3">
+            <label class="UpgLvl" id="Upg3Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg3Title"><font size = "6">×3 Points</font></label><br>
+            <label class="Cost" id="Upg3Cost">Cost: 1 PPts</label>
+            <button class="Buy" id="Upg3BuyOnce" onclick='Buy("Upg3",false)' style="background-color: aqua; color: black;">Buy 1</button>
+            <button class="Buy" id="Upg3BuyMax" onclick='Buy("Upg3",true)' style="background-color: aqua; color: black;">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg4">
+            <label class="UpgLvl" id="Upg4Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg4Title"><font size = "6">Add 0.05 to Upgrade 1's Base</font></label><br>
+            <label class="Cost" id="Upg4Cost">Cost: 25 PPts</label>
+            <button class="Buy" id="Upg4BuyOnce" onclick='Buy("Upg4",false)' style="background-color: aqua; color: black;">Buy 1</button>
+            <button class="Buy" id="Upg4BuyMax" onclick='Buy("Upg4",true)' style="background-color: aqua; color: black;">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg10" style="display: none;">
+            <label class="UpgLvl" id="Upg10Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg10Title"><font size = "6">+0.05 DCU D-Charge base</font></label><br>
+            <label class="Cost" id="Upg10Cost">Cost: 10.00Qn PPts</label>
+            <button class="Buy" id="Upg10BuyOnce" style="background-color: aqua; color: black;">Buy 1</button>
+            <button class="Buy" id="Upg10BuyMax" style="background-color: aqua; color: black;">Buy Max</button>
+        </div>
+        <label class = "bottom" style="position: absolute; bottom: -400px;">ㅤ</label>
+    </div>
+    <div class="page" id="ChargePage" style="display: none;">
+        <label id="ChargeLabel" class="label">You have <font size = "7" color="yellow">0</font> charge</label>
+        <label id="PowerLabel" class="label">Power: <font color="yellow">0</font> <br> Next at 1 charge
+        <br>Your power applies these effects:<br><font size = "50">×<font color="blue">1 <font color = "white">Points <br>x<font color="aqua">1</font> PPts </label>
+        <button class="resetButton" id="ChargeBtn" onclick='Charge()'>1UVt Pts required</button>
+        <div class="upgrade" id="Upg5">
+            <label class="UpgLvl" id="Upg5Lvl"><font size = "3">Not Bought</font></label><br>
+            <label class="UpgTitle" id="Upg5Title"><font size = "6">Autobuy points upgrades</font></label><br>
+            <label class="Cost" id="Upg5Cost"><font size = "4">Cost: 1.0000Tg Pts</font></label>
+            <button class="Buy" id="Upg5BuyOnce" onclick='BuySingle("Upg5",false)'>Buy</button>
+        </div>
+        <div class="upgrade" id="Upg6">
+            <label class="UpgLvl" id="Upg6Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg6Title"><font size = "6">×1.3 Charge</font></label><br>
+            <label class="Cost" id="Upg6Cost"><font size = "4">Cost: 1Qnqg Pts</label>
+            <button class="Buy" id="Upg6BuyOnce" onclick='Buy("Upg6",false)' style="background-color: #6200ea; color: rgb(255, 255, 255);">Buy 1</button>
+            <button class="Buy" id="Upg6BuyMax" onclick='Buy("Upg6",true)' style="background-color: #6200ea; color: rgb(255, 255, 255);">Buy Max</button>
+        </div>
+    </div>
+    <div class="page" id="DarkChargePage" style="display: none;">
+        <label id="DarkChargeLabel" class="label">You have <font size = "7" color="gray">0</font> dark charge<br>×0</label>
+        <div class="upgrade" id="Upg7">
+            <label class="UpgLvl" id="Upg7Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg7Title"><font size = "6">Dark Charge Upgrade.</font></label><br>
+            <label class="Cost" id="Upg7Cost"><font size = "4">Cost: 10 DC</label>
+            <button class="Buy" id="Upg7BuyOnce" onclick='Buy("Upg7",false)' style="background-color: #4e4e4e; color: rgb(255, 255, 255);">Buy 1</button>
+            <button class="Buy" id="Upg7BuyMax" onclick='Buy("Upg7",true)' style="background-color: #4e4e4e; color: rgb(255, 255, 255);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg8">
+            <label class="UpgLvl" id="Upg8Lvl"><font size = "3">Not Bought</font></label><br>
+            <label class="UpgTitle" id="Upg8Title"><font size = "6">Autobuy the first 2 prestige upgrades</font></label><br>
+            <label class="Cost" id="Upg8Cost"><font size = "4">Cost: 4.000K DC</font></label>
+            <button class="Buy" id="Upg8BuyOnce" onclick='BuySingle("Upg8",false)' style="background-color: #4e4e4e; color: rgb(255, 255, 255);">Buy</button>
+        </div>
+        <div class="upgrade" id="Upg9">
+            <label class="UpgLvl" id="Upg9Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg9Title"><font size = "6">+ 0.5 DCU Points base</font></label><br>
+            <label class="Cost" id="Upg9Cost"><font size = "4">Cost: 400 DC</label>
+            <button class="Buy" id="Upg9BuyOnce" onclick='Buy("Upg9",false)' style="background-color: #4e4e4e; color: rgb(255, 255, 255);">Buy 1</button>
+            <button class="Buy" id="Upg9BuyMax" onclick='Buy("Upg9",true)' style="background-color: #4e4e4e; color: rgb(255, 255, 255);">Buy Max</button>
+        </div>
+        <label id="DCULabel" class="label">DCU Upgrade applies these effects:<br><font size = "7" color="gray">×1<font color = "white"> dark charge<br><font color = "#6153CC">×1<font color = "white"> Points</label>
+        <label class = "bottom" style="position: absolute; bottom: -30px;">ㅤ</label>
+    </div>
+    <div class="page" id="InfinityPage" style="display: none;">
+        <label id="TIPLabel" class="label">You have <font size = "7" color="red">0</font> total infinity points</label>
+        <button class="resetButton" id="IPBtn" onclick='InfinityReset()'>179.76UCe Pts required</button>
+        <label id="InfinityBoosts" class="label">1 TIP: Generate PPts<br>2 TIP: ×4 Dark Charge<br>3 TIP: ×3 Charge<br>4 TIP: ×6 PPts<br>5 TIP: ×3 Charge<br>6 TIP: Keep Points autobuyers on infinity<br>7 TIP: ×3 Dark Charge<br>8 TIP: Keep Prestige autobuyers on infinity<br>10 TIP: ×3 Dark Charge yet again<br>13 TIP: ×4 Charge<br>16 TIP: ×5 PPts<br>20 TIP: Autobuy DCU<br>25 TIP: Autobuy '×1.3 Charge' Upgrade<br>30 TIP: Autobuy DCU points base<br>35 TIP: Autobuy DCU DC base<br>50 TIP: Break Infinity.<br>75 TIP: ×15 PPts<br>105 TIP: ×4 Dark Charge<br>1.000K TIP: Generate Charge<br>1B TIP: ×5 IP<br>150B TIP: ×12 IP<br>1QtVt TIP: ×100 Exotic Energy</label>
+    </div>
+    <div class="page" id="BreakPage" style="display: none;">
+        <label id="IPLabel" class="label">You have <font size = "7" color="red">0</font> infinity points</label>
+        <div class="upgrade" id="Upg11">
+            <label class="UpgLvl" id="Upg11Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg11Title"><font size = "6">×7.000K Points</font></label><br>
+            <label class="Cost" id="Upg11Cost"><font size = "4">Cost: 40 IP</label>
+            <button class="Buy" id="Upg11BuyOnce" onclick='Buy("Upg11",false)' style="background-color: #ff0000; color: rgb(255, 255, 255);">Buy 1</button>
+            <button class="Buy" id="Upg11BuyMax" onclick='Buy("Upg11",true)' style="background-color: #ff0000; color: rgb(255, 255, 255);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg12">
+            <label class="UpgLvl" id="Upg12Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg12Title"><font size = "6">×50 PPts</font></label><br>
+            <label class="Cost" id="Upg12Cost"><font size = "4">Cost: 100 IP</label>
+            <button class="Buy" id="Upg12BuyOnce" onclick='Buy("Upg12",false)' style="background-color: #ff0000; color: rgb(255, 255, 255);">Buy 1</button>
+            <button class="Buy" id="Upg12BuyMax" onclick='Buy("Upg12",true)' style="background-color: #ff0000; color: rgb(255, 255, 255);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg13">
+            <label class="UpgLvl" id="Upg13Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg13Title"><font size = "6">×2 IP</font></label><br>
+            <label class="Cost" id="Upg13Cost"><font size = "4">Cost: 100 IP</label>
+            <button class="Buy" id="Upg13BuyOnce" onclick='Buy("Upg13",false)' style="background-color: #ff0000; color: rgb(255, 255, 255);">Buy 1</button>
+            <button class="Buy" id="Upg13BuyMax" onclick='Buy("Upg13",true)' style="background-color: #ff0000; color: rgb(255, 255, 255);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg14">
+            <label class="UpgLvl" id="Upg14Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg14Title"><font size = "6">×5 Dark Charge</font></label><br>
+            <label class="Cost" id="Upg14Cost"><font size = "4">Cost: 500 IP</label>
+            <button class="Buy" id="Upg14BuyOnce" onclick='Buy("Upg14",false)' style="background-color: #ff0000; color: rgb(255, 255, 255);">Buy 1</button>
+            <button class="Buy" id="Upg14BuyMax" onclick='Buy("Upg14",true)' style="background-color: #ff0000; color: rgb(255, 255, 255);">Buy Max</button>
+        </div>
+    </div>
+    <div class="page" id="ExoticEnPage" style="display: none;">
+        <label id="ExoEnLabel" class="label">You have <font size = "7">0</font> exotic energy<br>x1.5 EE at 5Qd IP<br> 0 Upgrades gotten</label>
+        <div class="upgrade" id="Upg15">
+            <label class="UpgLvl" id="Upg15Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg15Title"><font size = "6">×2 IP</font></label><br>
+            <label class="Cost" id="Upg15Cost"><font size = "4">Cost: 100 EN</label>
+            <button class="Buy" id="Upg15BuyOnce" onclick='Buy("Upg15",false)' style="background-color: #ffffff; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg15BuyMax" onclick='Buy("Upg15",true)' style="background-color: #ffffff; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg16">
+            <label class="UpgLvl" id="Upg16Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg16Title"><font size = "6">×1Qd Pts</font></label><br>
+            <label class="Cost" id="Upg16Cost"><font size = "4">Cost: 1.000K EN</label>
+            <button class="Buy" id="Upg16BuyOnce" onclick='Buy("Upg16",false)' style="background-color: #ffffff; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg16BuyMax" onclick='Buy("Upg16",true)' style="background-color: #ffffff; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg17">
+            <label class="UpgLvl" id="Upg17Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg17Title"><font size = "6">×400 Charge</font></label><br>
+            <label class="Cost" id="Upg17Cost"><font size = "4">Cost: 50.000K EN</label>
+            <button class="Buy" id="Upg17BuyOnce" onclick='Buy("Upg17",false)' style="background-color: #ffffff; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg17BuyMax" onclick='Buy("Upg17",true)' style="background-color: #ffffff; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg18">
+            <label class="UpgLvl" id="Upg18Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg18Title"><font size = "6">×10M PPts</font></label><br>
+            <label class="Cost" id="Upg18Cost"><font size = "4">Cost: 1T EN</label>
+            <button class="Buy" id="Upg18BuyOnce" onclick='Buy("Upg18",false)' style="background-color: #ffffff; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg18BuyMax" onclick='Buy("Upg18",true)' style="background-color: #ffffff; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+    </div>
+    <div class="page" id="GalaxyPage" style="display: none;">
+        <label id="GalLabel" class="label">You have <font size = "7" color="blueviolet">0</font> Galaxies</label>
+        <button class="IPButton" id="GalBtn" onclick='GalaxyReset()'>10OcVt TIP required</button>
+        <label id="CosmicLabel" class="label"><font size = "7" color="darkorchid">0</font> Cosmic Dust<br>Cosmic Tier <font color ="darkorchid">0</font><br>Next tier at <font color ="darkorchid">10</font> CD<br> which applies these effects:<br><font color = "#6153CC">×1</font> Points<br><font color = "yellow">×1</font> Charge<br><font color = "red">×1</font> IP<br><font color = "darkorchid">×1</font> Cosmic Dust<br></label>
+        <div class="upgrade" id="Upg19">
+            <label class="UpgLvl" id="Upg19Lvl"><font size = "3">Not Bought</font></label><br>
+            <label class="UpgTitle" id="Upg19Title"><font size = "6">Begin generation of cosmic dust</font></label><br>
+            <label class="Cost" id="Upg19Cost"><font size = "4">Cost: 1 Gal</font></label>
+            <button class="Buy" id="Upg19BuyOnce" onclick='BuySingle("Upg19",false)' style="background-color: darkorchid;">Buy</button>
+        </div>
+        <div class="upgrade" id="Upg20">
+            <label class="UpgLvl" id="Upg20Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg20Title"><font size = "6">×5 Cosmic Dust</font></label><br>
+            <label class="Cost" id="Upg20Cost"><font size = "4">Cost: 1.5 Gal</label>
+            <button class="Buy" id="Upg20BuyOnce" onclick='Buy("Upg20",false)' style="background-color: darkorchid;">Buy 1</button>
+            <button class="Buy" id="Upg20BuyMax" onclick='Buy("Upg20",true)' style="background-color: darkorchid">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg21">
+            <label class="UpgLvl" id="Upg21Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg21Title"><font size = "6">×1.04 EE Upgrade base</font></label><br>
+            <label class="Cost" id="Upg21Cost"><font size = "4">Cost: 3.5 Gal</label>
+            <button class="Buy" id="Upg21BuyOnce" onclick='Buy("Upg21",false)' style="background-color: darkorchid;">Buy 1</button>
+            <button class="Buy" id="Upg21BuyMax" onclick='Buy("Upg21",true)' style="background-color: darkorchid">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg22">
+            <label class="UpgLvl" id="Upg22Lvl"><font size = "3">Not Bought</font></label><br>
+            <label class="UpgTitle" id="Upg22Title"><font size = "6">Generate a small portion of the IP you would get on reset</font></label><br>
+            <label class="Cost" id="Upg22Cost"><font size = "4">Cost: 150 Gal</font></label>
+            <button class="Buy" id="Upg22BuyOnce" onclick='BuySingle("Upg22",false)' style="background-color: darkorchid;">Buy</button>
+        </div>
+        <div class="upgrade" id="Upg23">
+            <label class="UpgLvl" id="Upg23Lvl"><font size = "3">Not Bought</font></label><br>
+            <label class="UpgTitle" id="Upg23Title"><font size = "6">Autobuy break infinity upgrades</font></label><br>
+            <label class="Cost" id="Upg23Cost"><font size = "4">Cost: 5.000K Gal</font></label>
+            <button class="Buy" id="Upg23BuyOnce" onclick='BuySingle("Upg23",false)' style="background-color: darkorchid;">Buy</button>
+        </div>
+        <div class="upgrade" id="Upg24">
+            <label class="UpgLvl" id="Upg24Lvl"><font size = "3">Not Bought</font></label><br>
+            <label class="UpgTitle" id="Upg24Title"><font size = "6">Autobuy exotic energy upgrades</font></label><br>
+            <label class="Cost" id="Upg24Cost"><font size = "4">Cost: 25.00K Gal</font></label>
+            <button class="Buy" id="Upg24BuyOnce" onclick='BuySingle("Upg24",false)' style="background-color: darkorchid;">Buy</button>
+        </div>
+        <div class="upgrade" id="Upg25">
+            <label class="UpgLvl" id="Upg25Lvl"><font size = "3">Not Bought</font></label><br>
+            <label class="UpgTitle" id="Upg25Title"><font size = "6">Keep points and PPts autobuyers on gal reset</font></label><br>
+            <label class="Cost" id="Upg25Cost"><font size = "4">Cost: 2M Gal</font></label>
+            <button class="Buy" id="Upg25BuyOnce" onclick='BuySingle("Upg25",false)' style="background-color: darkorchid;">Buy</button>
+        </div>
+        <div class="upgrade" id="Upg26">
+            <label class="UpgLvl" id="Upg26Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg26Title"><font size = "6">×1.05 IP Cosmic Tier Base</font></label><br>
+            <label class="Cost" id="Upg26Cost"><font size = "4">Cost: 25M Gal</label>
+            <button class="Buy" id="Upg26BuyOnce" onclick='Buy("Upg26",false)' style="background-color: darkorchid;">Buy 1</button>
+            <button class="Buy" id="Upg26BuyMax" onclick='Buy("Upg26",true)' style="background-color: darkorchid">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg27">
+            <label class="UpgLvl" id="Upg27Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg27Title"><font size = "6">×10 Pts Cosmic Tier Base</font></label><br>
+            <label class="Cost" id="Upg27Cost"><font size = "4">Cost: 100Qd Gal</label>
+            <button class="Buy" id="Upg27BuyOnce" onclick='Buy("Upg27",false)' style="background-color: darkorchid;">Buy 1</button>
+            <button class="Buy" id="Upg27BuyMax" onclick='Buy("Upg27",true)' style="background-color: darkorchid">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg29">
+            <label class="UpgLvl" id="Upg29Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg29Title"><font size = "6">×1.5 Replicanti Speed</font></label><br>
+            <label class="Cost" id="Upg29Cost"><font size = "4">Cost: 100UDe Gal</label>
+            <button class="Buy" id="Upg29BuyOnce" onclick='Buy("Upg29",false)' style="background-color: darkorchid;">Buy 1</button>
+            <button class="Buy" id="Upg29BuyMax" onclick='Buy("Upg29",true)' style="background-color: darkorchid">Buy Max</button>
+        </div>
+    </div>
+    <div class="page" id="ReplicantiPage" style="display: none;">
+        <label id="ReplicantiLabel" class="label">You have <font size = "7" color="#00ff00">0</font> replicanti</label>
+        <div class="upgrade" id="Upg28">
+            <label class="UpgLvl" id="Upg28Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg28Title"><font size = "6">×5 Galaxies</font></label><br>
+            <label class="Cost" id="Upg28Cost"><font size = "4">Cost: 2.35 Rep</label>
+            <button class="Buy" id="Upg28BuyOnce" onclick='Buy("Upg28",false,true,1)' style="background-color: #00ff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg28BuyMax" onclick='Buy("Upg28",true,true,1)' style="background-color: #00ff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg30">
+            <label class="UpgLvl" id="Upg30Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg30Title"><font size = "6">×1.05 CD Cosmic Tier Base</font></label><br>
+            <label class="Cost" id="Upg30Cost"><font size = "4">Cost: 36.63 Rep</label>
+            <button class="Buy" id="Upg30BuyOnce" onclick='Buy("Upg30",false,true,1)' style="background-color: #00ff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg30BuyMax" onclick='Buy("Upg30",true,true,1)' style="background-color: #00ff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg31">
+            <label class="UpgLvl" id="Upg31Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg31Title"><font size = "6">×5 Charge Cosmic Tier Base</font></label><br>
+            <label class="Cost" id="Upg31Cost"><font size = "4">Cost: 87.61 Rep</label>
+            <button class="Buy" id="Upg31BuyOnce" onclick='Buy("Upg31",false,true,1)' style="background-color: #00ff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg31BuyMax" onclick='Buy("Upg31",true,true,1)' style="background-color: #00ff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg32">
+            <label class="UpgLvl" id="Upg32Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg32Title"><font size = "6">×3M Upgrade 1's Base</font></label><br>
+            <label class="Cost" id="Upg32Cost"><font size = "4">Cost: 270 Rep</label>
+            <button class="Buy" id="Upg32BuyOnce" onclick='Buy("Upg32",false,true,1)' style="background-color: #00ff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg32BuyMax" onclick='Buy("Upg32",true,true,1)' style="background-color: #00ff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg33">
+            <label class="UpgLvl" id="Upg33Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg33Title"><font size = "6">×10De DCU Pts Base</font></label><br>
+            <label class="Cost" id="Upg33Cost"><font size = "4">Cost: 750 Rep</label>
+            <button class="Buy" id="Upg33BuyOnce" onclick='Buy("Upg33",false,true,1)' style="background-color: #00ff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg33BuyMax" onclick='Buy("Upg33",true,true,1)' style="background-color: #00ff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+    </div>
+    <div class="page" id="SolarPage" style="display: none;">
+        <label id="SolarLabel" class="label">You have <font size = "7" color="#ff6600">0</font> Solar Gems</label>
+        <button class="IPButton" id="SolarBtn" onclick='SolarReset()'>179.76UCe Galaxies required</button>
+        <label id="StarLabel" class="label">Your star temperature is <font size = "7" color="#ffff00">0</font>°C<br>which generates <font color ="#ffff00">0</font> energy/s</label>
+        <label id="StarInfoLabel" class="label">Tip: Always make sure you have point and prestige autobuyers enabled (charge and dark charge upgrades)</label>
+        <div class="upgrade" id="Upg34">
+            <label class="UpgLvl" id="Upg34Lvl"><font size = "3">Not Bought</font></label><br>
+            <label class="UpgTitle" id="Upg34Title"><font size = "6">Improve Prestige's formula and allows your star to generate energy</font></label><br>
+            <label class="Cost" id="Upg34Cost"><font size = "4">Cost: 1 S Gems</font></label>
+            <button class="Buy" id="Upg34BuyOnce" onclick='BuySingle("Upg34",false)' style="background-color: rgb(255,100,0);">Buy</button>
+        </div>
+        <div class="upgrade" id="Upg35"style ="display: none;">
+            <label class="UpgLvl" id="Upg35Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg35Title"><font size = "6">×3 Points</font></label><br>
+            <label class="Cost" id="Upg35Cost"><font size = "4">Cost: 25 En</label>
+            <button class="Buy" id="Upg35BuyOnce" onclick='Buy("Upg35",false)' style="background-color: #ffff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg35BuyMax" onclick='Buy("Upg35",true)' style="background-color: #ffff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg36"style ="display: none;">
+            <label class="UpgLvl" id="Upg36Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg36Title"><font size = "6">×2 Gal upgrade 2 base</font></label><br>
+            <label class="Cost" id="Upg36Cost"><font size = "4">Cost: 1 S Gems</label>
+            <button class="Buy" id="Upg36BuyOnce" onclick='Buy("Upg36",false)' style="background-color: rgb(255,100,0); color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg36BuyMax" onclick='Buy("Upg36",true)' style="background-color: rgb(255,100,0); color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg37"style ="display: none;">
+            <label class="UpgLvl" id="Upg37Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg37Title"><font size = "6">×5 Galaxies and autobuy +1 galaxy upgrade</font></label><br>
+            <label class="Cost" id="Upg37Cost"><font size = "4">Cost: 250 En</label>
+            <button class="Buy" id="Upg37BuyOnce" onclick='Buy("Upg37",false)' style="background-color: #ffff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg37BuyMax" onclick='Buy("Upg37",true)' style="background-color: #ffff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg38"style ="display: none;">
+            <label class="UpgLvl" id="Upg38Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg38Title"><font size = "6">×1.05 Temperature</font></label><br>
+            <label class="Cost" id="Upg38Cost"><font size = "4">Cost: 1 S Gems</label>
+            <button class="Buy" id="Upg38BuyOnce" onclick='Buy("Upg38",false)' style="background-color: rgb(255,100,0); color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg38BuyMax" onclick='Buy("Upg38",true)' style="background-color: rgb(255,100,0); color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg39"style ="display: none;">
+            <label class="UpgLvl" id="Upg39Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg39Title"><font size = "6">×5 IP</font></label><br>
+            <label class="Cost" id="Upg39Cost"><font size = "4">Cost: 1,000 En</label>
+            <button class="Buy" id="Upg39BuyOnce" onclick='Buy("Upg39",false)' style="background-color: #ffff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg39BuyMax" onclick='Buy("Upg39",true)' style="background-color: #ffff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg40"style ="display: none;">
+            <label class="UpgLvl" id="Upg40Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg40Title"><font size = "6">^1.15 Galaxy limit</font></label><br>
+            <label class="Cost" id="Upg40Cost"><font size = "4">Cost: 1,000 En</label>
+            <button class="Buy" id="Upg40BuyOnce" onclick='Buy("Upg40",false)' style="background-color: #ffff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg40BuyMax" onclick='Buy("Upg40",true)' style="background-color: #ffff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+        <div class="upgrade" id="Upg41"style ="display: none;">
+            <label class="UpgLvl" id="Upg41Lvl"><font size = "3">Not Bought</font></label><br>
+            <label class="UpgTitle" id="Upg41Title"><font size = "6">Keep points, prestige and break infinity autobuyers</font></label><br>
+            <label class="Cost" id="Upg41Cost"><font size = "4">Cost: 80 S Gems</font></label>
+            <button class="Buy" id="Upg41BuyOnce" onclick='BuySingle("Upg41",false)' style="background-color: rgb(255,100,0);">Buy</button>
+        </div>
+        <div class="upgrade" id="Upg42"style ="display: none;">
+            <label class="UpgLvl" id="Upg42Lvl"><font size = "3">Level 0</font></label><br>
+            <label class="UpgTitle" id="Upg42Title"><font size = "6">×1.8 Replicanti speed and autobuy +1 Replicanti upgrade</font></label><br>
+            <label class="Cost" id="Upg42Cost"><font size = "4">Cost: 1,000 En</label>
+            <button class="Buy" id="Upg42BuyOnce" onclick='Buy("Upg42",false)' style="background-color: #ffff00; color: rgb(0, 0, 0);">Buy 1</button>
+            <button class="Buy" id="Upg42BuyMax" onclick='Buy("Upg42",true)' style="background-color: #ffff00; color: rgb(0,0,0);">Buy Max</button>
+        </div>
+    </div>
+    <script src="break_eternity.js-master/break_eternity.js"></script>
+    <script src="main.js"></script>
+    <script src="upgrades.js"></script>
+</body>
+</html>
